@@ -17,15 +17,28 @@ import Random from './Random'
 class TabIcon extends Component {
     render(){      
       // Render the title of the tab here
-      return null
+      return (
+        <Text style={{color: this.props.selected ? 'red' : 'black'}}>
+          {this.props.title}
+        </Text>
+      )
     }
 }
 
 class AppRouter extends Component {
   render() {
-	
     // Return <Router> and <Scenes> here
-   	return null
+   	return (
+      <Router>
+        <Scene key="root">
+          <Scene key="tabs" hideNavBar={true} tabs={true} tabBarStyle={styles.tabBar}>
+            <Scene key="posts" component={Posts} title="Posts" icon={TabIcon} style={{paddingTop: 64}} />
+            <Scene key="random" component={Random} title="Random" icon={TabIcon} style={{paddingTop: 64}} />
+            <Scene key="login" component={Login} title="Login" icon={TabIcon} style={{paddingTop: 64}} initial={true} />
+          </Scene>          
+        </Scene>
+      </Router>
+    )
   }
 }
 
